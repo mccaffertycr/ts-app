@@ -10,7 +10,8 @@ const Note = mongoose.model('Note', NoteSchema);
         if (err) {
           res.send(err);
         }
-        res.json(notes);
+        // res.json(notes);
+        res.send('notes');
       })
     }
 

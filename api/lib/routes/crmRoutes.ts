@@ -14,7 +14,13 @@ export class Routes {
     })
 
     app.route('/poems')
-    .get(this.NoteController.getNotes)
+    .get((req: Request, res: Response, next: Function) => {
+      if(req.query.key !== '60caa902f084ef81ff4c15cc90e044b113a66a65e'){
+        res.status(401).send('You shall not pass!');
+       } else {
+        next();
+       } 
+      }, this.NoteController.getNotes)
     .post(this.NoteController.addNewNote)
 
     app.route('/poems/:id')

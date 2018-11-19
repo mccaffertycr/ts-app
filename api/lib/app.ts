@@ -1,6 +1,7 @@
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import * as mongoose from 'mongoose';
+import * as morgan from 'morgan';
 import { Routes } from './routes/crmRoutes';
 
 class App {
@@ -17,6 +18,7 @@ class App {
     }
     
     private config(): void{
+        this.app.use(morgan('dev'));
         // support application/json type post data
         this.app.use(bodyParser.json());
         //support application/x-www-form-urlencoded post data
